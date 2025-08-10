@@ -1,0 +1,40 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clean Workspace') {
+            steps {
+                deleteDir()
+            }
+        }
+
+        stage('Checkout Code') {
+            steps {
+                sh 'git clone https://github.com/kodekloudhub/jenkins-project.git'
+            }
+        }
+
+        stage('Set Up Environment') {
+            steps {
+                sh 'pip install -r jenkins-project/requirements.txt'
+            }
+        }
+
+        stage('Unit Testing') {
+            steps {
+                sh 'pytest'
+            }
+        }
+        
+        stage('Login to DockerHub') {
+            steps {
+                withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
+                    sh '''
+                        echo "$dockerhubpwd" | docker login -u max --password-stdin localhost:5000
+                    '''
+                    echo 'Login successfully'
+                }
+            }
+        }
+    }
+}
