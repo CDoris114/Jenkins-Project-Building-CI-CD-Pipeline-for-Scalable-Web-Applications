@@ -1,7 +1,9 @@
 Flask To-Do List Application
 
 This is a simple web application that implements a to-do list using a standard Flask script. The project serves as a practical example for integration with tools like Jenkins, Git, Docker, and running on Linux, in continuous integration and continuous delivery (CI/CD) environments.
+
 Overview
+
 The application provides basic functionality for adding, viewing, and deleting tasks, all managed through a minimalist web server. This project is ideal for testing and demonstrating build automation, testing, and deployment processes using modern technologies.
 
 Purpose and Usage
