@@ -1,0 +1,6 @@
+Project Description
+
+This application builds a Docker container image for a Python app and tags it with the current Jenkins build number. The Jenkins pipeline:
+    Cleans the workspace before building;
+    Builds the Docker image from the source code located at /root/jenkins-project/;
+    Tags the image as localhost:5000/my-python-app:<build_number>.
